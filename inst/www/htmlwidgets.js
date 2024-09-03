@@ -512,6 +512,9 @@
       // supported natively by Shiny at the time of this writing.
 
       shinyBinding.renderValue = function(el, data) {
+        if (data === null) {
+          return null;
+        }
         Shiny.renderDependenciesAsync(data.deps).then(() => {
           // Resolve strings marked as javascript literals to objects
           if (!(data.evals instanceof Array)) data.evals = [data.evals];
