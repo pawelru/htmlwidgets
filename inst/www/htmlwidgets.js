@@ -513,7 +513,7 @@
 
       shinyBinding.renderValue = function(el, data) {
         if (data === null) {
-          return null;
+          data = {deps: [], evals: [], jsHooks: [], x: null};
         }
         Shiny.renderDependenciesAsync(data.deps).then(() => {
           // Resolve strings marked as javascript literals to objects
